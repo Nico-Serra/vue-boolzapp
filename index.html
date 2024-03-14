@@ -113,30 +113,32 @@
     
                 <div class="chat">
                     <div class="container-sm">
-                        <div class="top-chat">
-                            <div class="text d-flex">
-                                <p>{{contact.messages[0].message}}</p>
-    
-                                <div class="right-text d-flex">
-                                    <i class="fa-solid fa-chevron-down"></i>
-                                    <span>16:13</span>
+                        <div class="chat_complete"  v-for="(chat,index) in contact.messages">
+                            <div class="top-chat " v-show="chat.status === 'sent'">
+                                <div class="text d-flex">
+                                    <p>{{chat.message}}</p>
+        
+                                    <div class="right-text d-flex">
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                        <span>16:13</span>
+                                    </div>
+        
                                 </div>
-    
                             </div>
-                        </div>
-                        <!-- /.top-chat -->
-    
-                        <div class="bottom-chat">
-                            <div class="text d-flex">
-                                <p>{{contact.messages[1].message}}</p>
-                                <div class="right-text d-flex">
-                                    <i class="fa-solid fa-chevron-down"></i>
-                                    <span>16:15</span>
+                            <!-- /.top-chat -->
+        
+                            <div class="bottom-chat" v-show="chat.status === 'received'">
+                                <div class="text d-flex">
+                                    <p>{{chat.message}}</p>
+                                    <div class="right-text d-flex">
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                        <span>16:15</span>
+                                    </div>
+        
                                 </div>
-    
                             </div>
+                            <!-- /.bottom-chat -->
                         </div>
-                        <!-- /.bottom-chat -->
                     </div>
     
     

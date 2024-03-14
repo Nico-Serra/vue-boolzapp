@@ -183,6 +183,7 @@ createApp({
         }
     },
     mounted(){
-        console.log(this.contacts[0].visible);
+        //onsole.log(this.contacts[0].visible);
+        console.log(this.contacts[0].messages.status);
     }
 }).mount('#app')

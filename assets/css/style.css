@@ -265,15 +265,15 @@ img {
 }
 
 .top-chat {
-    width: 70%;
-    margin-left: 30%;
+    width: 50%;
+    margin-left: 50%;
     background-color: var(--bool-chat);
     border-radius: 10px;
 }
 
 .bottom-chat {
-    width: 70%;
-    margin-right: 30%;
+    width: 50%;
+    margin-right: 50%;
     background-color: var(--bool-light);
     border-radius: 10px;
 }
@@ -305,6 +305,7 @@ img {
 .text{
     padding: 1rem;
     margin-bottom: 1rem;
+    justify-content: space-between;
     
 }
 

@@ -59,7 +59,7 @@
     
                 <div class="contacts">
     
-                    <div class="recent d-flex" v-for="contact in contacts">
+                    <div class="recent d-flex" v-for="(contact,index) in contacts" @click="showChat(index)">
     
                         <div class="pic">
                             <img :src="contact.avatar" alt="">
@@ -89,16 +89,16 @@
             <!-- /.left -->
     
     
-            <div class="right">
+            <div class="right" v-for="(contact,index) in contacts" v-show="activeChat === index ">
     
                 <div class="contact d-flex">
     
                     <div class="pic">
-                        <img src="./assets/img/avatar_1.jpg" alt="">
+                        <img :src="contact.avatar" alt="">
                     </div>
     
                     <div class="name-top">
-                        <h4>Michele</h4>
+                        <h4>{{contact.name}}</h4>
                         <p>Ultimo accesso oggi alle 16:26</p>
                     </div>
     
@@ -115,11 +115,7 @@
                     <div class="container-sm">
                         <div class="top-chat">
                             <div class="text d-flex">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam est culpa autem incidunt
-                                    facilis facere deserunt odit nesciunt, eos inventore! Repellat voluptatem tempore
-                                    necessitatibus ipsam sequi dicta omnis dolorem, at expedita eveniet, consequatur
-                                    officiis sint distinctio dolores voluptas atque deleniti unde dolorum suscipit alias
-                                    autem porro nobis mollitia totam? Qui?</p>
+                                <p>{{contact.messages[0].message}}</p>
     
                                 <div class="right-text d-flex">
                                     <i class="fa-solid fa-chevron-down"></i>
@@ -132,11 +128,7 @@
     
                         <div class="bottom-chat">
                             <div class="text d-flex">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam est culpa autem incidunt
-                                    facilis facere deserunt odit nesciunt, eos inventore! Repellat voluptatem tempore
-                                    necessitatibus ipsam sequi dicta omnis dolorem, at expedita eveniet, consequatur
-                                    officiis sint distinctio dolores voluptas atque deleniti unde dolorum suscipit alias
-                                    autem porro nobis mollitia totam? Qui?</p>
+                                <p>{{contact.messages[1].message}}</p>
                                 <div class="right-text d-flex">
                                     <i class="fa-solid fa-chevron-down"></i>
                                     <span>16:15</span>

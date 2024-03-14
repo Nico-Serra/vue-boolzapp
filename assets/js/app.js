@@ -11,6 +11,11 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
+            userMessage: {
+                date: '10/01/2020 15:30:55',
+                message: '',
+                status: 'sent'
+            },
             activeChat: 0,
             contacts: [
                 {
@@ -177,12 +182,27 @@ createApp({
             ]
         }
     },
-    methods:{
-        showChat(index){
+    methods: {
+        showChat(index) {
             this.activeChat = index
-        }
+        },
+        sendMessage(contact) {
+            const newMessage = { ...this.userMessage }
+            console.log(newMessage);
+            contact.messages.push(newMessage)
+            this.userMessage.message = ''
+
+            setTimeout(function(){
+                const okMessage = {
+                    date: '10/01/2020 16:15:22',
+                    message: 'OK',
+                    status: 'received'
+                };
+                contact.messages.push(okMessage)
+            },1000)
+        },
     },
-    mounted(){
+    mounted() {
         //onsole.log(this.contacts[0].visible);
         console.log(this.contacts[0].messages.status);
     }

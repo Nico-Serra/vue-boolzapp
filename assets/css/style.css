@@ -225,6 +225,7 @@ img {
 .recent{
     gap: 1rem;
     border-bottom: 0.1px solid lightgray;
+    padding: 0 0.5rem;
 }
 
 .name{

@@ -148,7 +148,7 @@
                 <div class="write d-flex">
                     <a href="#" class="hidden"><i class="fa-regular fa-face-smile"></i></a>
     
-                    <input type="text" placeholder="Scrivi qui il tuo messaggio">
+                    <input type="text" placeholder="Scrivi qui il tuo messaggio" @keyup.enter="sendMessage(contact)" v-model="userMessage.message">
     
                     <a href="#" class="hidden"><i class="fa-solid fa-microphone"></i></a>
     

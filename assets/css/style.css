@@ -151,7 +151,7 @@ img {
     background-color: var(--bool-lighter);
     height: 55px; 
     border-right: 0.1px solid lightgray;
-    gap: 7.5rem;
+    justify-content: space-between;
 }
 
 
@@ -159,7 +159,6 @@ img {
 
 .action {
     align-self: center;
-    padding: 0 1rem;
 }
 
 .action a ,.write a{

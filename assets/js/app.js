@@ -177,6 +177,6 @@ createApp({
         }
     },
     mounted(){
-        console.log(this.contacts[0].avatar);
+        console.log(this.contacts[0].messages[2].message);
     }
 }).mount('#app')

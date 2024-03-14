@@ -30,7 +30,17 @@ img {
     border-radius: 50%;
 }
 
-
+.subnav-content{
+    background-color: white;
+    position: absolute;
+    right: 0;
+    
+    width: 50%;
+    & > p {
+        border: 0.5px solid lightgray;
+        padding: 0.5rem;
+    }
+}
 
 
 /* #region utilities */
@@ -307,6 +317,7 @@ img {
     padding: 1rem;
     margin-bottom: 1rem;
     justify-content: space-between;
+    position: relative;
     
 }
 

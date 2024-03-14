@@ -117,11 +117,15 @@
                     <div class="container-sm">
                         <div class="chat_complete"  v-for="(chat,index) in contact.messages">
                             <div class="top-chat " v-show="chat.status === 'sent'">
-                                <div class="text d-flex">
+                                <div class="text d-flex" v-show="chat.delete === true">
                                     <p>{{chat.message}}</p>
         
                                     <div class="right-text d-flex">
-                                        <i class="fa-solid fa-chevron-down"></i>
+                                        <i class="fa-solid fa-chevron-down" @click="openMenu(chat)"></i>
+                                        <div class="subnav-content" v-show="chat.hidden === true">
+                                            <p>info messaggio</p>
+                                            <p @click="deleteMessage(chat)">cancella messaggio</p>
+                                        </div>
                                         <span>16:13</span>
                                     </div>
         

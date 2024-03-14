@@ -1,0 +1,420 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* color palette */
+:root {
+    --bool-light: rgba(255, 255, 255, 1);
+    --bool-lighter: rgba(234, 234, 234, 1);
+    --bool-body-primary: rgba(215, 219, 214, 1);
+    --bool-body-secondary: rgba(0, 150, 136, 1);
+    --bool-chat: rgba(213, 249, 186, 1);
+    --bool-sky: rgba(142, 218, 252, 1);
+    --bool-icon: rgba(177, 177, 177, 1);
+    --bool-dark: rgba(0, 0, 0, 1);
+
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(to top, rgba(215, 219, 214, 1) 90%, rgba(0, 150, 136, 1) 50%);
+    font-family: 'Lato', sans-serif;
+
+}
+
+img {
+    max-width: 100%;
+    border-radius: 50%;
+}
+
+
+/* #region utilities */
+
+.d-flex {
+    display: flex;
+}
+
+.pic {
+    aspect-ratio: 1;
+    object-fit: cover;
+    padding: 0.5rem;
+
+}
+/* #endregion utilities */
+
+
+/* #region Debug */
+
+.debug {
+    background-color: red;
+
+}
+
+.debug .web-app {
+    background-color: yellow;
+}
+
+.debug .left {
+    background-color: aqua;
+}
+
+.debug .right {
+    background-color: green;
+}
+
+.debug .profile {
+    background-color: pink;
+
+}
+
+.debug .notifications {
+    background-color: pink;
+    height: 10%;
+}
+
+.debug .search {
+    background-color: lightsalmon;
+    height: 5%;
+}
+
+.debug .contacts {
+    background-color: lightskyblue;
+    height: 75%;
+}
+
+.debug .contact {
+    background-color: lightgreen;
+    height: 10%;
+}
+
+.debug .chat {
+    background-color: lightgoldenrodyellow;
+    height: 80%;
+}
+
+.debug .write {
+    background-color: lightgreen;
+    height: 10%;
+}
+
+.debug .container-sm {
+    height: 100%;
+}
+
+.debug .top-chat {
+    height: 40%;
+    background-color: gold;
+}
+
+.debug .bottom-chat {
+    height: 40%;
+    background-color: gold;
+}
+
+
+/* #endregion Debug */
+
+/* #region web-app */
+
+.web-app {
+    max-width: 1200px;
+    height: 95vh;
+    margin: auto;
+    margin-top: 2.5vh;
+    display: flex;
+}
+
+/* #region left */
+
+.left {
+    height: 100%;
+    min-width: 320px;
+}
+
+/* #region profile */
+.profile {
+    background-color: var(--bool-lighter);
+    height: 55px; 
+    border-right: 0.1px solid lightgray;
+    gap: 7.5rem;
+}
+
+
+
+
+.action {
+    align-self: center;
+    padding: 0 1rem;
+}
+
+.action a ,.write a{
+    color: var(--bool-icon);
+    text-decoration: none;
+    font-size: x-large;
+    padding: 0 0.5rem;
+}
+
+/* #endregion profile */
+
+/* #region notifications */
+
+.notifications{
+    background-color: var(--bool-sky);
+    height: 55px;
+    align-items: center;
+    gap: 1rem;
+}
+
+.notifications .pic{
+    font-size: large;
+}
+
+.pic i{
+    background-color: var(--bool-light);
+    padding: 0.8rem;
+    border-radius: 50%;
+    color: var(--bool-sky);
+}
+
+
+.receive a{
+    color: gray;
+    font-size: 0.8rem;
+}
+/* #endregion notifications */
+
+/* #region search */
+
+.search{
+    height: 30px;
+    background-color: var(--bool-lighter);
+    align-items: center;
+    color: gray;
+    
+}
+
+.box{
+    gap: 1rem;
+    background-color: var(--bool-light);
+    padding: 0.3rem 1rem;
+    width: 95%;
+    margin: auto;
+    border-radius: 0.5rem;
+}
+
+[type="text"]{
+    border: none;
+    outline: none;
+   flex-grow: 1;
+}
+/* #endregion search */
+
+/* #region contacts */
+
+.contacts{
+    height: calc(100% - 140px);
+    overflow-y: auto;
+    background-color: var(--bool-light);
+}
+
+.recent{
+    gap: 1rem;
+    border-bottom: 0.1px solid lightgray;
+}
+
+.name, .hour{
+    align-self: center;
+}
+
+.recent p, .recent span{
+    color: gray;
+}
+
+.recent span{
+    font-size: 0.8rem;
+}
+
+.recent .pic{
+    width: 70px;
+}
+
+
+/* #endregion contacts */
+
+
+
+/* #endregion left */
+
+/* #region right */
+
+.right {
+    height: 100%;
+    flex-grow: 1;
+}
+
+.container-sm {
+    width: 90%;
+    margin: auto;
+}
+
+.top-chat {
+    width: 70%;
+    margin-left: 30%;
+    background-color: var(--bool-chat);
+    border-radius: 10px;
+}
+
+.bottom-chat {
+    width: 70%;
+    margin-right: 30%;
+    background-color: var(--bool-light);
+    border-radius: 10px;
+}
+
+
+/* #region contact */
+
+.contact{
+    height: 55px;
+    background-color: var(--bool-lighter);
+}
+
+.name-top{
+    align-self: center;
+    flex-grow: 1;
+}
+
+
+/* #endregion contact */
+
+/* #region chat */
+
+.chat{
+    background-image: url(../img/mine.jpg);
+    height: calc(100% - 110px);
+    padding: 2rem 0;
+}
+
+.text{
+    padding: 1rem;
+    margin-bottom: 1rem;
+    
+}
+
+.right-text i{
+    color: gray;
+}
+
+.right-text span{
+    color: gray;
+    font-size: 0.8rem;
+}
+
+.right-text{
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat{
+    overflow-y: auto;
+}
+
+/* #endregion chat */
+
+
+/* #region write */
+
+.write{
+    height: 55px;
+    background-color: var(--bool-lighter);
+    justify-content: space-around;
+    align-items: center;
+}
+
+.write-here{
+    background-color: var(--bool-light);
+    width: 80%;
+    border-radius: 5px;
+    
+    
+}
+
+.write >input{
+    font-size: 0.8rem;
+    padding: 0.8rem;
+}
+
+.write >a{
+    width: 70px;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+}
+
+
+/* #endregion write */
+
+/* #endregion right */
+
+/* #endregion web-app */
+
+/* #region @media */
+
+@media screen and (max-width:991px) {
+    .web-app {
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .left {
+        min-width: 80px;
+    }
+
+    .action, .notifications, .search ,.name ,.hour{
+        display: none;
+    }
+
+    .contacts {
+        height: calc(100% - 55px);
+    }
+    .contact .action{
+        display: block;
+        padding: 0;
+    }
+
+    .recent {
+        justify-content: space-around;
+    }
+
+    .profile{
+        gap: 0;
+        justify-content: space-around;
+    }
+    
+
+@media screen and (max-width:540px) {
+    .left {
+        display: none;
+    }
+
+    .right {
+        width: 100%;
+    }
+
+    .write a {
+        display: none;
+    }
+
+    [type="text"]{
+        width: 90%;
+        margin: auto;
+        flex-grow: 0;
+    }
+}
+
+/* #endregion @media */

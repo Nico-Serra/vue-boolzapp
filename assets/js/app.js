@@ -11,6 +11,7 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
+            search: '',
             userMessage: {
                 date: '10/01/2020 15:30:55',
                 message: '',
@@ -201,9 +202,30 @@ createApp({
                 contact.messages.push(okMessage)
             },1000)
         },
+        /**
+         * 
+         * @param {Array} contacts 
+         */
+        filterContacts(contacts){
+            //const newArray =[{...contacts}]
+            //console.log(newArray);
+            //console.log(contacts.includes(this.search));
+            const newContacts = contacts.filter((contact) => {
+                //console.log(contact.name.split('').includes(this.search));
+                if (contact.name.toLowerCase().includes(this.search.toLowerCase())) {
+                  return contact
+                }
+            }) 
+            console.log(newContacts)
+            this.contacts = newContacts
+        },
+        /*showAllContacts(contacts){
+            contacts = this.contacts
+        }*/
+
     },
     mounted() {
         //onsole.log(this.contacts[0].visible);
         console.log(this.contacts[0].messages.status);
-    }
+    },
 }).mount('#app')

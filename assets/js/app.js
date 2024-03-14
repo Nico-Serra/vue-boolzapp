@@ -1,4 +1,4 @@
-console.log('hello ');
+//console.log('hello ');
 
 /*
 - Milestone 1
@@ -244,7 +244,7 @@ createApp({
         },
         sendMessage(contact) {
             const newMessage = { ...this.userMessage }
-            console.log(newMessage);
+            //console.log(newMessage);
             contact.messages.push(newMessage)
             this.userMessage.message = ''
 
@@ -271,12 +271,13 @@ createApp({
                     return contact
                 }
             })
-            console.log(newContacts)
-            this.contacts = newContacts
+            //console.log(newContacts)
+            return newContacts
         },
         /*showAllContacts(contacts){
-            contacts = this.contacts
-        }*/
+            const allcontacts = {this.contacts}
+            console.log(allcontacts);
+        },*/
         openMenu(chat){
             chat.hidden= true
         },
@@ -286,6 +287,7 @@ createApp({
     },
     mounted() {
         //onsole.log(this.contacts[0].visible);
-        console.log(this.contacts[0].messages.status);
+        //console.log(this.contacts[0].messages.status);
+        //console.log(this.search.length);
     },
 }).mount('#app')

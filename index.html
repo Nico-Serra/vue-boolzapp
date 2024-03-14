@@ -51,41 +51,73 @@
     
                 <div class="search d-flex">
                     <div class="box d-flex">
-                        <template v-if>
                             <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="search" @keyup="filterContacts(contacts)">
-                        </template>
+                        <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="search" @keyup="filterContacts(contacts)" >
                     </div>
                 </div>
                 <!-- /.cearch -->
+                
+                <template v-if="search.length === 0">
+                    <div class="contacts">
     
-                <div class="contacts">
-    
-                    <div class="recent d-flex" v-for="(contact,index) in contacts" @click="showChat(index)">
-    
-                        <div class="pic">
-                            <img :src="contact.avatar" alt="">
+                        <div class="recent d-flex" v-for="(contact,index) in contacts" @click="showChat(index)">
+        
+                            <div class="pic">
+                                <img :src="contact.avatar" alt="">
+                            </div>
+                            <!-- /.pic -->
+        
+                            <div class="name">
+                                <h4>{{contact.name}}</h4>
+                                <p>
+                                    {{contact.messages.slice(-1)[0].message}}
+                                </p>
+                            </div>
+                            <!-- /.name -->
+        
+                            <div class="hour">
+                                <span> {{contact.messages.slice(-1)[0].date}}</span>
+                            </div>
+                            <!-- /.hour -->
                         </div>
-                        <!-- /.pic -->
-    
-                        <div class="name">
-                            <h4>{{contact.name}}</h4>
-                            <p>
-                                {{contact.messages.slice(-1)[0].message}}
-                            </p>
-                        </div>
-                        <!-- /.name -->
-    
-                        <div class="hour">
-                            <span> {{contact.messages.slice(-1)[0].date}}</span>
-                        </div>
-                        <!-- /.hour -->
+                        <!-- /.recent -->
+                        
+        
                     </div>
-                    <!-- /.recent -->
-                    
+                    <!-- /.contacts -->
+                </template>
+
+                <template v-if="search.length > 0">
+                    <div class="contacts">
     
-                </div>
-                <!-- /.contacts -->
+                        <div class="recent d-flex" v-for="(contact,index) in filterContacts(contacts)" @click="showChat(index)">
+        
+                            <div class="pic">
+                                <img :src="contact.avatar" alt="">
+                            </div>
+                            <!-- /.pic -->
+        
+                            <div class="name">
+                                <h4>{{contact.name}}</h4>
+                                <p>
+                                    {{contact.messages.slice(-1)[0].message}}
+                                </p>
+                            </div>
+                            <!-- /.name -->
+        
+                            <div class="hour">
+                                <span> {{contact.messages.slice(-1)[0].date}}</span>
+                            </div>
+                            <!-- /.hour -->
+                        </div>
+                        <!-- /.recent -->
+                        
+        
+                    </div>
+                    <!-- /.contacts -->
+                </template>
+                
+                
     
             </div>
             <!-- /.left -->

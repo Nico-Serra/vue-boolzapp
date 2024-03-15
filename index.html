@@ -21,13 +21,13 @@
         <div class="web-app">
 
             <div class="left">
-    
+
                 <div class="profile d-flex">
                     <div class="pic">
                         <img src="./assets/img/avatar_io.jpg" alt="">
                     </div>
                     <!-- /.pic -->
-    
+
                     <div class="action">
                         <a href="#"><i class="fa-solid fa-circle-notch"></i></a>
                         <a href="#"><i class="fa-solid fa-message"></i></a>
@@ -36,7 +36,7 @@
                     <!-- /.action -->
                 </div>
                 <!-- /.profile -->
-    
+
                 <div class="notifications d-flex">
                     <div class="pic">
                         <i class="fa-solid fa-bell-slash"></i>
@@ -45,113 +45,115 @@
                         <p>Ricevi notifiche di nuovi messaggi</p>
                         <a href="#">Attiva notifiche desktop</a>
                     </div>
-    
+
                 </div>
                 <!-- /.notifications -->
-    
+
                 <div class="search d-flex">
                     <div class="box d-flex">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="search" @keyup="filterContacts(contacts)" >
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="search"
+                            @keyup="filterContacts(contacts)">
                     </div>
                 </div>
                 <!-- /.cearch -->
-                
-                <template v-if="search.length === 0">
-                    <div class="contacts">
-    
-                        <div class="recent d-flex" v-for="(contact,index) in contacts" @click="showChat(index)">
-        
-                            <div class="pic">
-                                <img :src="contact.avatar" alt="">
-                            </div>
-                            <!-- /.pic -->
-        
-                            <div class="name">
-                                <h4>{{contact.name}}</h4>
-                                <p>
-                                    {{contact.messages.slice(-1)[0].message}}
-                                </p>
-                            </div>
-                            <!-- /.name -->
-        
-                            <div class="hour">
-                                <span> {{contact.messages.slice(-1)[0].date}}</span>
-                            </div>
-                            <!-- /.hour -->
-                        </div>
-                        <!-- /.recent -->
-                        
-        
-                    </div>
-                    <!-- /.contacts -->
-                </template>
 
-                <template v-if="search.length > 0">
-                    <div class="contacts">
-    
-                        <div class="recent d-flex" v-for="(contact,index) in filterContacts(contacts)" @click="showChat(index)">
-        
-                            <div class="pic">
-                                <img :src="contact.avatar" alt="">
-                            </div>
-                            <!-- /.pic -->
-        
-                            <div class="name">
-                                <h4>{{contact.name}}</h4>
-                                <p>
-                                    {{contact.messages.slice(-1)[0].message}}
-                                </p>
-                            </div>
-                            <!-- /.name -->
-        
-                            <div class="hour">
-                                <span> {{contact.messages.slice(-1)[0].date}}</span>
-                            </div>
-                            <!-- /.hour -->
+
+                <div class="contacts" v-if="search.length === 0">
+
+                    <div class="recent d-flex" v-for="(contact,index) in contacts" @click="showChat(index)">
+
+                        <div class="pic">
+                            <img :src="contact.avatar" alt="">
                         </div>
-                        <!-- /.recent -->
-                        
-        
+                        <!-- /.pic -->
+
+                        <div class="name">
+                            <h4>{{contact.name}}</h4>
+                            <p>
+                                {{contact.messages.slice(-1)[0].message}}
+                            </p>
+                        </div>
+                        <!-- /.name -->
+
+                        <div class="hour">
+                            <span> {{contact.messages.slice(-1)[0].date}}</span>
+                        </div>
+                        <!-- /.hour -->
                     </div>
-                    <!-- /.contacts -->
-                </template>
-                
-                
-    
+                    <!-- /.recent -->
+
+
+                </div>
+                <!-- /.contacts -->
+
+
+
+                <div class="contacts" v-else>
+
+                    <div class="recent d-flex" v-for="(contact,index) in filterContacts(contacts)"
+                        @click="showChat(index)">
+
+                        <div class="pic">
+                            <img :src="contact.avatar" alt="">
+                        </div>
+                        <!-- /.pic -->
+
+                        <div class="name">
+                            <h4>{{contact.name}}</h4>
+                            <p>
+                                {{contact.messages.slice(-1)[0].message}}
+                            </p>
+                        </div>
+                        <!-- /.name -->
+
+                        <div class="hour">
+                            <span> {{contact.messages.slice(-1)[0].date}}</span>
+                        </div>
+                        <!-- /.hour -->
+                    </div>
+                    <!-- /.recent -->
+
+
+                </div>
+                <!-- /.contacts -->
+
+
+
+
             </div>
             <!-- /.left -->
-    
-    
-            <div class="right" v-for="(contact,index) in contacts" v-show="activeChat === index ">
-    
+
+
+            <div class="right" v-for="(contact,index) in filterContacts(contacts) " v-show="activeChat === index ">
+
                 <div class="contact d-flex">
-    
+
                     <div class="pic">
                         <img :src="contact.avatar" alt="">
                     </div>
-    
+
                     <div class="name-top">
                         <h4>{{contact.name}}</h4>
                         <p>Ultimo accesso oggi alle {{contact.messages.slice(-1)[0].date}}</p>
                     </div>
-    
+
                     <div class="action">
                         <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
                         <a href="#"><i class="fa-solid fa-paperclip"></i></a>
                         <a href="#"><i class="fa-solid fa-ellipsis-vertical"></i></a>
                     </div>
-    
+
                 </div>
                 <!-- /.contact -->
-    
+
                 <div class="chat">
                     <div class="container-sm">
-                        <div class="chat_complete"  v-for="(chat,index) in contact.messages">
+                        <div class="chat_complete" v-for="(chat,index) in contact.messages">
                             <div class="top-chat " v-show="chat.status === 'sent'">
                                 <div class="text d-flex" v-show="chat.delete === true">
                                     <p>{{chat.message}}</p>
-        
+
                                     <div class="right-text d-flex">
                                         <i class="fa-solid fa-chevron-down" @click="openMenu(chat)"></i>
                                         <div class="subnav-content" v-show="chat.hidden === true">
@@ -160,11 +162,11 @@
                                         </div>
                                         <span>{{chat.date}}</span>
                                     </div>
-        
+
                                 </div>
                             </div>
                             <!-- /.top-chat -->
-        
+
                             <div class="bottom-chat" v-show="chat.status === 'received'">
                                 <div class="text d-flex">
                                     <p>{{chat.message}}</p>
@@ -172,37 +174,114 @@
                                         <i class="fa-solid fa-chevron-down"></i>
                                         <span>{{chat.date}}</span>
                                     </div>
-        
+
                                 </div>
                             </div>
                             <!-- /.bottom-chat -->
                         </div>
                     </div>
-    
-    
+
+
                 </div>
                 <!-- /.chat -->
-    
+
                 <div class="write d-flex">
                     <a href="#" class="hidden"><i class="fa-regular fa-face-smile"></i></a>
-    
-                    <input type="text" placeholder="Scrivi qui il tuo messaggio" @keyup.enter="sendMessage(contact)" v-model="userMessage.message">
-    
+
+                    <input type="text" placeholder="Scrivi qui il tuo messaggio" @keyup.enter="sendMessage(contact)"
+                        v-model="userMessage.message">
+
                     <a href="#" class="hidden"><i class="fa-solid fa-microphone"></i></a>
-    
-    
-    
+
+
+
                 </div>
                 <!-- /.write -->
-    
-    
+
+
+            </div>
+
+            <div class="right" v-for="(contact,index) in contacts " v-show="activeChat === index " v-if="filterContacts(contacts).length === 0">
+
+                <div class="contact d-flex">
+
+                    <div class="pic">
+                        <img :src="contact.avatar" alt="">
+                    </div>
+
+                    <div class="name-top">
+                        <h4>{{contact.name}}</h4>
+                        <p>Ultimo accesso oggi alle {{contact.messages.slice(-1)[0].date}}</p>
+                    </div>
+
+                    <div class="action">
+                        <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                        <a href="#"><i class="fa-solid fa-paperclip"></i></a>
+                        <a href="#"><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                    </div>
+
+                </div>
+                <!-- /.contact -->
+
+                <div class="chat">
+                    <div class="container-sm">
+                        <div class="chat_complete" v-for="(chat,index) in contact.messages">
+                            <div class="top-chat " v-show="chat.status === 'sent'">
+                                <div class="text d-flex" v-show="chat.delete === true">
+                                    <p>{{chat.message}}</p>
+
+                                    <div class="right-text d-flex">
+                                        <i class="fa-solid fa-chevron-down" @click="openMenu(chat)"></i>
+                                        <div class="subnav-content" v-show="chat.hidden === true">
+                                            <p>info messaggio</p>
+                                            <p @click="deleteMessage(chat)">cancella messaggio</p>
+                                        </div>
+                                        <span>{{chat.date}}</span>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- /.top-chat -->
+
+                            <div class="bottom-chat" v-show="chat.status === 'received'">
+                                <div class="text d-flex">
+                                    <p>{{chat.message}}</p>
+                                    <div class="right-text d-flex">
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                        <span>{{chat.date}}</span>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- /.bottom-chat -->
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- /.chat -->
+
+                <div class="write d-flex">
+                    <a href="#" class="hidden"><i class="fa-regular fa-face-smile"></i></a>
+
+                    <input type="text" placeholder="Scrivi qui il tuo messaggio" @keyup.enter="sendMessage(contact)"
+                        v-model="userMessage.message">
+
+                    <a href="#" class="hidden"><i class="fa-solid fa-microphone"></i></a>
+
+
+
+                </div>
+                <!-- /.write -->
+
+
             </div>
             <!-- /.right -->
-    
+
         </div>
         <!-- /.web-app -->
     </div>
-    
+
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="./assets/js/app.js"></script>
 </body>

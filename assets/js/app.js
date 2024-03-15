@@ -8,6 +8,8 @@
 
 const { createApp } = Vue;
 
+let DateTime = luxon.DateTime;
+
 createApp({
     data() {
         return {
@@ -244,16 +246,24 @@ createApp({
         },
         sendMessage(contact) {
             const newMessage = { ...this.userMessage }
+            newMessage.date = this.getCurrentHour()
             //console.log(newMessage);
             contact.messages.push(newMessage)
             this.userMessage.message = ''
 
+            this.receivedMessage(contact)
+        },
+        receivedMessage(contact){
+            //console.log(this.getCurrentHour());
+            let hour = this.getCurrentHour()
             setTimeout(function () {
-                const okMessage = {
+                let okMessage = {
                     date: '16:15',
                     message: 'OK',
                     status: 'received'
                 };
+                okMessage.date = hour
+                //okMessage.date = this.getCurrentHour();
                 contact.messages.push(okMessage)
             }, 1000)
         },
@@ -283,11 +293,17 @@ createApp({
         },
         deleteMessage(chat){
             chat.delete= false
+        },
+        getCurrentHour() {
+            const currentHour = DateTime.local();
+            return `${currentHour.hour}:${currentHour.minute}`;
         }
     },
     mounted() {
         //onsole.log(this.contacts[0].visible);
         //console.log(this.contacts[0].messages.status);
         //console.log(this.search.length);
+        console.log(this.getCurrentHour());
+        //console.log(DateTime);
     },
 }).mount('#app')

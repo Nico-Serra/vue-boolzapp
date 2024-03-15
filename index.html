@@ -60,7 +60,6 @@
 
 
                 <div class="contacts" v-if="search.length === 0">
-
                     <div class="recent d-flex" v-for="(contact,index) in contacts" @click="showChat(index)">
 
                         <div class="pic">
@@ -201,7 +200,8 @@
 
             </div>
 
-            <div class="right" v-for="(contact,index) in contacts " v-show="activeChat === index " v-if="filterContacts(contacts).length === 0">
+            <div class="right" v-for="(contact,index) in contacts " v-show="activeChat === index "
+                v-if="filterContacts(contacts).length === 0">
 
                 <div class="contact d-flex">
 
@@ -283,7 +283,9 @@
     </div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/app.js" type="module"></script>
+    <script  src = "https://cdn.jsdelivr.net/npm/luxon@2.1.1/build/global/luxon.min.js" > </script>
+    
 </body>
 
 </html>
